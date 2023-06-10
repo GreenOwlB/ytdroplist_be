@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 
 const videosRouter = require("./routes/videos");
@@ -12,6 +13,7 @@ app.use(
     extended: true,
   })
 );
+app.use(cors());
 app.get("/", (req, res) => {
   res.send("connected");
 });
