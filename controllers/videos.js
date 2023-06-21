@@ -3,7 +3,7 @@ const { getUpdatedFields, trimFields } = require("../utilities/helpers");
 
 const getAllVideos = async (req, res) => {
   const sql =
-    "SELECT id, title, channel, DATE_FORMAT(date_published, '%d-%m-%Y') AS date_published, description FROM videos";
+    "SELECT id, yt_id, title, channel, DATE_FORMAT(date_published, '%d-%m-%Y') AS date_published, description, thumbnail_df, thumbnail_md FROM videos";
 
   try {
     const [rows, fields] = await pool.query(sql);
@@ -25,7 +25,7 @@ const getAllVideos = async (req, res) => {
 const getVideoById = async (req, res) => {
   const { id } = req.params;
   const sql =
-    "SELECT id, title, channel, DATE_FORMAT(date_published, '%d-%m-%Y') AS date_published, description FROM videos WHERE id = ?";
+    "SELECT id, yt_id, title, channel, DATE_FORMAT(date_published, '%d-%m-%Y') AS date_published, description, thumbnail_df, thumbnail_md FROM videos WHERE id = ?";
   const values = [id];
 
   try {

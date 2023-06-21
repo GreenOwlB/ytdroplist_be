@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const videosRouter = require("./routes/videos");
+const ytRouter = require("./routes/yt");
 
 const PORT = process.env.PORT || 3001;
 
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/videos", videosRouter);
+app.use("/yt", ytRouter);
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
